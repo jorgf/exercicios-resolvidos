@@ -18,22 +18,23 @@ Autor: Jorge França
 -----------------------
 Data: 05 - Set - 2025
 */
-#include <stdio.h>  // inlcusao da biblioteca stdio -> funcao printf()
+#include <stdio.h> 
 
-float densidadePop(int populacao, float area){
-    return (float)populacao/area;
+float densidadePop(unsigned long int populacao, float area){
+    return populacao/area;
 }
-float pibPerCap(float pib, int populacao){
-    return (float)(pib*1000000000)/populacao;
+
+float pibPerCap(float pib, unsigned long int populacao){
+    return (pib*1000000000)/populacao;
 
 }
-int main(){         // funcao principal, indica inicio do programa
+int main(){
     // declaracao das variaveis
     // carta #1
     char estado, estado2;
     char codigoCarta[4];
     char nomeCidade[50];
-    int populacao;
+    unsigned long int populacao;
     float area;
     float pib;
     int qntPontosTuristicos;
@@ -44,7 +45,7 @@ int main(){         // funcao principal, indica inicio do programa
     // char estado2;
     char codigoCarta2[4];
     char nomeCidade2[50];
-    int populacao2;
+    unsigned long int populacao2;
     float area2;
     float pib2;
     int qntPontosTuristicos2;
@@ -68,7 +69,7 @@ int main(){         // funcao principal, indica inicio do programa
     scanf("%s", nomeCidade);
 
     printf("Tamanho populacional: ");
-    scanf("%d", &populacao);
+    scanf("%lu", &populacao);
 
     printf("Digite a area (km2): ");
     scanf("%f", &area);
@@ -81,6 +82,7 @@ int main(){         // funcao principal, indica inicio do programa
 
     densidadePopulacional = densidadePop(populacao, area);
     pibPerCapita = pibPerCap(pib, populacao);
+    float superPoder = populacao + area + pib + (1.0/densidadePopulacional);
 
     //input - carta #2
     printf("\n-------------------------------------------------------\n");
@@ -96,7 +98,7 @@ int main(){         // funcao principal, indica inicio do programa
     scanf("%s", nomeCidade2);
 
     printf("Tamanho populacional: ");
-    scanf("%d", &populacao2);
+    scanf("%lu", &populacao2);
 
     printf("Digite a area (km2): ");
     scanf("%f", &area2);
@@ -109,6 +111,7 @@ int main(){         // funcao principal, indica inicio do programa
 
     densidadePopulacional2 = densidadePop(populacao2, area2);
     pibPerCapita2 = pibPerCap(pib2, populacao2);
+    float superPoder2 = populacao2 + area2 + pib2 + (1.0/densidadePopulacional2);
 
     // Rotina para mostrar carta na saida padrao
     printf("\n-------------------------------------------------------\n");
@@ -117,7 +120,7 @@ int main(){         // funcao principal, indica inicio do programa
     printf("Estado: %c\n", estado);
     printf("Código: %s\n", codigoCarta);
     printf("Nome da cidade: %s\n", nomeCidade);
-    printf("População: %d\n", populacao);
+    printf("População: %lu\n", populacao);
     printf("Área: %.2f km²\n", area);
     printf("PIB: %.2f bilhões de reais\n", pib);
     printf("Número de pontos turísticos: %d\n", qntPontosTuristicos);
@@ -130,12 +133,26 @@ int main(){         // funcao principal, indica inicio do programa
     printf("Estado: %c\n", estado2);
     printf("Código: %s\n", codigoCarta2);
     printf("Nome da cidade: %s\n", nomeCidade2);
-    printf("População: %d\n", populacao2);
+    printf("População: %lu\n", populacao2);
     printf("Área: %.2f km²\n", area2);
     printf("PIB: %.2f bilhões de reais\n", pib2);
     printf("Número de pontos turísticos: %d\n", qntPontosTuristicos2);
     printf("Densidade populacional: %.2f hab/km2\n", densidadePopulacional2);
     printf("PIB per Capita: %.2f reais\n", pibPerCapita2);
+
+    printf("\n-------------------------------------------------------\n");
+    printf("            Combate: Carta #1 VERSUS Carta #2            \n");
+    printf("---------------------------------------------------------\n");
+    printf("População: %d\n", populacao > populacao2);
+    printf("Área: %d\n", area > area2);
+    printf("PIB: %d\n", pib > pib2);
+    printf("Número de pontos turísticos: %d\n", qntPontosTuristicos > qntPontosTuristicos2);
+    printf("Densidade populacional: %d\n", densidadePopulacional < densidadePopulacional2);
+    printf("PIB per Capita: %d\n", pibPerCapita > pibPerCapita2);
+    printf("Super poder: %d\n", superPoder > superPoder2);
+    printf("---------------------------------------------------------\n");
+    printf("Legenda:\n1 - Carta #1 Venceu!\n0 - Carta #2 Venceu!\n");
+    printf("---------------------------------------------------------\n");
 
     return 0;
 }
