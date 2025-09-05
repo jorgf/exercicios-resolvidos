@@ -20,6 +20,13 @@ Data: 05 - Set - 2025
 */
 #include <stdio.h>  // inlcusao da biblioteca stdio -> funcao printf()
 
+float densidadePop(int populacao, float area){
+    return (float)populacao/area;
+}
+float pibPerCap(float pib, int populacao){
+    return (float)(pib*1000000000)/populacao;
+
+}
 int main(){         // funcao principal, indica inicio do programa
     // declaracao das variaveis
     // carta #1
@@ -30,6 +37,8 @@ int main(){         // funcao principal, indica inicio do programa
     float area;
     float pib;
     int qntPontosTuristicos;
+    float densidadePopulacional;
+    float pibPerCapita;
     
     // carta #2
     // char estado2;
@@ -39,6 +48,8 @@ int main(){         // funcao principal, indica inicio do programa
     float area2;
     float pib2;
     int qntPontosTuristicos2;
+    float densidadePopulacional2;
+    float pibPerCapita2;
     
     //input
     printf("--------------------------------------\n");
@@ -68,6 +79,9 @@ int main(){         // funcao principal, indica inicio do programa
     printf("Digite o número de pontos turísticos: ");
     scanf("%d", &qntPontosTuristicos);
 
+    densidadePopulacional = densidadePop(populacao, area);
+    pibPerCapita = pibPerCap(pib, populacao);
+
     //input - carta #2
     printf("\n-------------------------------------------------------\n");
     printf("Agora vamos cadastrar a carta #2!\n");
@@ -93,6 +107,9 @@ int main(){         // funcao principal, indica inicio do programa
     printf("Digite o número de pontos turísticos: ");
     scanf("%d", &qntPontosTuristicos2);
 
+    densidadePopulacional2 = densidadePop(populacao2, area2);
+    pibPerCapita2 = pibPerCap(pib2, populacao2);
+
     // Rotina para mostrar carta na saida padrao
     printf("\n-------------------------------------------------------\n");
     printf("Carta #1: \n");
@@ -104,7 +121,9 @@ int main(){         // funcao principal, indica inicio do programa
     printf("Área: %.2f km²\n", area);
     printf("PIB: %.2f bilhões de reais\n", pib);
     printf("Número de pontos turísticos: %d\n", qntPontosTuristicos);
-    
+    printf("Densidade populacional: %.2f hab/km2\n", densidadePopulacional);
+    printf("PIB per Capita: %.2f reais\n", pibPerCapita);
+
     printf("\n-------------------------------------------------------\n");
     printf("Carta #2: \n");
     printf("----------\n");
@@ -115,6 +134,8 @@ int main(){         // funcao principal, indica inicio do programa
     printf("Área: %.2f km²\n", area2);
     printf("PIB: %.2f bilhões de reais\n", pib2);
     printf("Número de pontos turísticos: %d\n", qntPontosTuristicos2);
+    printf("Densidade populacional: %.2f hab/km2\n", densidadePopulacional2);
+    printf("PIB per Capita: %.2f reais\n", pibPerCapita2);
 
-    return 0;       //indica o retorno da funcao main, nesse caso um inteiro com valor zero
+    return 0;
 }
